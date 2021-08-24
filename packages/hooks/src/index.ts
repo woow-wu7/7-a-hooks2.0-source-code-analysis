@@ -49,11 +49,7 @@ import useInterval from './useInterval';
 import useWhyDidYouUpdate from './useWhyDidYouUpdate';
 import useTitle from './useTitle';
 import useNetwork from './useNetwork';
-<<<<<<< HEAD
 import useTimeout from './useTimeout'; // useTimeout
-=======
-import useTimeout from './useTimeout';
->>>>>>> 3dc5e0de57222972a0992179e086f87c5592a0d1
 import useReactive from './useReactive';
 import useFavicon from './useFavicon';
 import useCountDown from './useCountDown';
