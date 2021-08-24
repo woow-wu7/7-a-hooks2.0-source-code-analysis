@@ -50,11 +50,15 @@ function useRequest<R = any, Item = any, U extends Item = any>(
 
 function useRequest(service: any, options: any = {}) {
   const contextConfig = useContext(ConfigContext);
+<<<<<<< HEAD
   // const ConfigContext = React.createContext<Config>({});
   // ConfigContext.displayName = 'UseRequestConfigContext';
 
   const finalOptions = { ...contextConfig, ...options };
   // 合并 options
+=======
+  const finalOptions = { ...contextConfig, ...options };
+>>>>>>> 3dc5e0de57222972a0992179e086f87c5592a0d1
 
   const { paginated, loadMore, requestMethod } = finalOptions;
 
@@ -78,6 +82,7 @@ function useRequest(service: any, options: any = {}) {
     fetch(...args).then((res: Response) => {
       if (res.ok) {
         return res.json();
+<<<<<<< HEAD
         // resposne 是 Response对象
         // 1
         // json数据 --- response.json()
@@ -127,6 +132,29 @@ function useRequest(service: any, options: any = {}) {
           let fn = s;
           if (!s.then) {
             // 不是一个promise
+=======
+      }
+      throw new Error(res.statusText);
+    });
+
+  const finalRequestMethod = requestMethod || fetchProxy;
+
+  let promiseService: () => Promise<any>;
+  switch (typeof service) {
+    case 'string':
+      promiseService = () => finalRequestMethod(service);
+      break;
+    case 'object':
+      const { url, ...rest } = service;
+      promiseService = () => (requestMethod ? requestMethod(service) : fetchProxy(url, rest));
+      break;
+    default:
+      promiseService = (...args: any[]) =>
+        new Promise((resolve, reject) => {
+          const s = service(...args);
+          let fn = s;
+          if (!s.then) {
+>>>>>>> 3dc5e0de57222972a0992179e086f87c5592a0d1
             switch (typeof s) {
               case 'string':
                 fn = finalRequestMethod(s);

@@ -32,7 +32,10 @@ function useEventListener<K extends keyof WindowEventMap>(
 ): void;
 function useEventListener(eventName: string, handler: Function, options: Options): void;
 
+<<<<<<< HEAD
 // useEventListener
+=======
+>>>>>>> 3dc5e0de57222972a0992179e086f87c5592a0d1
 function useEventListener(eventName: string, handler: Function, options: Options = {}) {
   const handlerRef = useRef<Function>();
   handlerRef.current = handler;
