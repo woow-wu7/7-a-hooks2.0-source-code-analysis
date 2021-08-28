@@ -5,3 +5,4 @@
 - [x] useUpdateEffect useLocalStorageState
 - [x] useToggle useBoolean
 - [x] useTimeout
+- [x] useFullscreen

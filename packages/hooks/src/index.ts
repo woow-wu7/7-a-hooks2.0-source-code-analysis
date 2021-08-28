@@ -22,7 +22,7 @@ import usePrevious from './usePrevious';
 import useMouse from './useMouse';
 import useScroll from './useScroll';
 import useClickAway from './useClickAway';
-import useFullscreen from './useFullscreen';
+import useFullscreen from './useFullscreen'; // useFullscreen
 import useInViewport from './useInViewport';
 import useKeyPress from './useKeyPress';
 import useEventListener from './useEventListener';
@@ -74,14 +74,14 @@ export {
   useVirtualList,
   useResponsive,
   useEventEmitter,
-  useLocalStorageState,
+  useLocalStorageState, // useLocalStorageState
   useSessionStorageState,
   useSize,
   configResponsive,
   useUpdateEffect,
   useUpdateLayoutEffect,
   useBoolean,
-  useToggle,
+  useToggle, // useToggle
   useDocumentVisibility,
   useSelections,
   useThrottle,

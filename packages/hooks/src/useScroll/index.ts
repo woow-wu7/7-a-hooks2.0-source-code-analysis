@@ -10,6 +10,8 @@ interface Position {
 export type Target = BasicTarget<HTMLElement | Document>;
 export type ScrollListenController = (val: Position) => boolean;
 
+
+// useScroll
 function useScroll(target?: Target, shouldUpdate: ScrollListenController = () => true): Position {
   const [position, setPosition] = useState<Position>({
     left: NaN,
