@@ -11,6 +11,7 @@ export interface Options {
 }
 
 // screenfull
+// screenfull官网 https://github.com/sindresorhus/screenfull.js
 // 这里首先需要了解几个 screenfull 的 api
 
 // isEnabled
