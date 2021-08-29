@@ -6,3 +6,4 @@
 - [x] useToggle useBoolean
 - [x] useTimeout
 - [x] useFullscreen
+- [x] useUpdate
