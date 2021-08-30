@@ -1,7 +1,13 @@
 import { useEffect, useRef } from 'react';
 
 // useUpdateEffect
+// 1
 // - 模拟 componentDidUpdate，当不存在依赖项时
+// 2
+// useUpdateEffect(
+//   effect: () => (void | (() => void | undefined)),
+//   deps?: deps,
+// )
 const useUpdateEffect: typeof useEffect = (effect, deps) => {
   const isMounted = useRef(false);
 
@@ -16,7 +22,11 @@ const useUpdateEffect: typeof useEffect = (effect, deps) => {
     } else {
       return effect();
       // 1. update => 第一次不执行effect()，只有也只会在依赖更新时执行即除了第一次，以后和useEffect行为保持一致
-      // 2. 如果没有依赖项 deps，则和 ( compoenntDidMount ) 行为保持一致
+      // 2. 如果没有依赖项 deps，则和 ( componentDidMount ) 行为保持一致
+
+      // 注意：
+      // 1. 这里的 return 是为了完全模拟 useEffect，因为 useEffect 可以还有清除函数
+      // 2. effect函数签名是：effect: () => (void | (() => void | undefined)) 说明可以返回一个清除函数
     }
   }, deps);
 };

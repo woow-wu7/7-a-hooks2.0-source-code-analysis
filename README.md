@@ -2,8 +2,8 @@
 
 ### 任务清单 - 完成度
 
-- [x] useUpdateEffect useLocalStorageState
+- [x] useUpdate useUpdateEffect
+- [x] useLocalStorageState
 - [x] useToggle useBoolean
 - [x] useTimeout
 - [x] useFullscreen
-- [x] useUpdate
