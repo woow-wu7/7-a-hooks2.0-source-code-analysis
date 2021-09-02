@@ -7,3 +7,4 @@
 - [x] useToggle useBoolean
 - [x] useTimeout
 - [x] useFullscreen
+- [x] useResponsive configResponsive
