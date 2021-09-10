@@ -8,3 +8,4 @@
 - [x] useTimeout
 - [x] useFullscreen
 - [x] useResponsive configResponsive
+- [x] useMap
