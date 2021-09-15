@@ -11,3 +11,4 @@
 - [x] useMap
 - [x] useSetState 类似于class中的this.setState()
 - [x] useTitle useUnmount
+- [x] useLockFn

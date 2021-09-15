@@ -47,14 +47,14 @@ import useCookieState from './useCookieState';
 import useSetState from './useSetState'; // useSetState
 import useInterval from './useInterval';
 import useWhyDidYouUpdate from './useWhyDidYouUpdate';
-import useTitle from './useTitle';
+import useTitle from './useTitle'; // useTitle 设置页面标题
 import useNetwork from './useNetwork';
 import useTimeout from './useTimeout'; // useTimeout
 import useReactive from './useReactive';
 import useFavicon from './useFavicon';
 import useCountDown from './useCountDown';
 import useWebSocket from './useWebSocket';
-import useLockFn from './useLockFn';
+import useLockFn from './useLockFn'; // useLockFn，用于给一个异步函数增加 ( 竞态锁 )，防止并发执行
 import useTrackedEffect from './useTrackedEffect';
 import useUnmountedRef from './useUnmountedRef';
 import useExternal from './useExternal';
