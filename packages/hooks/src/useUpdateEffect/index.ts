@@ -27,6 +27,7 @@ const useUpdateEffect: typeof useEffect = (effect, deps) => {
       // 注意：
       // 1. 这里的 return 是为了完全模拟 useEffect，因为 useEffect 可以还有清除函数
       // 2. effect函数签名是：effect: () => (void | (() => void | undefined)) 说明可以返回一个清除函数
+      // 3. 注意点：传入effect函数中，还可以return一个函数，这个函数就是真正的 useEffect(() => () => { 清除函数中做点事情 }) 中 return 的清除函数
     }
   }, deps);
 };

@@ -39,7 +39,7 @@ import useDrag from './useDrag';
 import useMount from './useMount';
 import useTextSelection from './useTextSelection';
 import useCounter from './useCounter';
-import useUpdate from './useUpdate'; // useUpdate
+import useUpdate from './useUpdate'; // useUpdate 强制组件重新渲染
 import useEventTarget from './useEventTarget';
 import useHistoryTravel from './useHistoryTravel';
 import useDebounceEffect from './useDebounceEffect';

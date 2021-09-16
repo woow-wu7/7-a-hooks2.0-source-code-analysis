@@ -2,7 +2,8 @@
 
 ### 任务清单 - 完成度
 
-- [x] useUpdate useUpdateEffect
+- [x] useUpdate -> 强制组件重新渲染
+- [x] useUpdateEffect -> 用法上和useEffect完全保持一致，只是 ( useUpdateEffect ) 忽略了 ( 首次渲染 )，并且 ( 只在依赖项更新时运行 )
 - [x] useLocalStorageState
 - [x] useToggle useBoolean
 - [x] useTimeout
