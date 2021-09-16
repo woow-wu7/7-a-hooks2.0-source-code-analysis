@@ -3,6 +3,9 @@ import { useRef } from 'react';
 // useCreation
 // 说明：
 // - useCreation 是 useMemo 或者 useRef 的替代品，因为useMemo不能保证memo的值一定不会被重计算
+// 参数：
+// - factory：用来创建对象的工厂函数，该对象就是需要 useMemo 或者 useRef 的对象
+// - deps：依赖数组
 // 使用：
 // - const b = useCreation(() => new Subject(), [])
 export default function useCreation<T>(factory: () => T, deps: any[]) {
