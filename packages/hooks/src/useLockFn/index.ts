@@ -25,6 +25,15 @@ import { useRef, useCallback } from 'react';
 // - 注意点
 //    - useCallback(fn, deps) === useMemo(() => fn, deps)
 
+// 3
+// 泛型函数的两种写法
+// 1. function a<T>(params: T) {...}
+// 2. const a = <T>(params: T) => {....}
+
+// 4
+// 泛型约束
+// p extends any[] ---> 将p的any类型约束成 any[] ---> 这样就可以用p来指代any[]
+
 function useLockFn<P extends any[] = any[], V extends any = any>(fn: (...args: P) => Promise<V>) {
   const lockRef = useRef(false);
 

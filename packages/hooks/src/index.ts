@@ -13,7 +13,7 @@ import useBoolean from './useBoolean';
 import useToggle from './useToggle'; // useToggle
 import useDocumentVisibility from './useDocumentVisibility';
 import useSelections from './useSelections';
-import useThrottle from './useThrottle';
+import useThrottle from './useThrottle'; // useThrottle
 import useThrottleFn from './useThrottleFn';
 import useThrottleEffect from './useThrottleEffect';
 import useDebounce from './useDebounce';
@@ -33,7 +33,7 @@ import useFusionTable from './useFusionTable';
 import useSet from './useSet'; // useSet 和 useMap 类似
 import usePersistFn from './usePersistFn';
 import useMap from './useMap'; // useMap
-import useCreation from './useCreation';
+import useCreation from './useCreation'; // useCreation 是 useMemo 或者 useRef 的替代品，因为useMemo不能保证memo的值一定不会被重计算
 import useDrop from './useDrop';
 import useDrag from './useDrag';
 import useMount from './useMount';

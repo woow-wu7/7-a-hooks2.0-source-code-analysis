@@ -6,9 +6,19 @@ import useUnmount from '../useUnmount';
 
 type Fn = (...args: any) => any;
 
+// export interface ThrottleOptions {
+//   wait?: number;
+//   leading?: boolean;
+//   trailing?: boolean;
+// }
+
+// useThrottleFn
 function useThrottleFn<T extends Fn>(fn: T, options?: ThrottleOptions) {
   const fnRef = useRef<T>(fn);
   fnRef.current = fn;
+  // 问题：这里为什么要在赋一次fn给fnRef.current呢 ？
+  // 回答：为了解决闭包问题
+  // issue：https://github.com/alibaba/hooks/issues/1121
 
   const wait = options?.wait ?? 1000;
 
