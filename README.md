@@ -14,3 +14,4 @@
 - [x] useTitle useUnmount
 - [x] useLockFn -> 用于给一个 ( 异步函数 ) 添加 ( 竞态锁 )，防止 ( 并发执行 )
 - [x] useCreation -> 是 useMemo 或 useRef 的替代品
+- [x] useTextSelection -> 实时获取用户当前选取的文本内容及位置
