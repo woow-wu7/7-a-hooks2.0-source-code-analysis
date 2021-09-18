@@ -32,7 +32,9 @@ function useEventListener<K extends keyof WindowEventMap>(
 ): void;
 function useEventListener(eventName: string, handler: Function, options: Options): void;
 
+
 // useEventListener
+// ------------------------------------------------------------------------------------------------------------ useEventListener
 function useEventListener(eventName: string, handler: Function, options: Options = {}) {
   const handlerRef = useRef<Function>();
   handlerRef.current = handler;
@@ -50,13 +52,13 @@ function useEventListener(eventName: string, handler: Function, options: Options
     };
 
     targetElement.addEventListener(eventName, eventListener, {
-      capture: options.capture,
-      once: options.once,
-      passive: options.passive,
+      capture: options.capture, // 是否在捕获阶段触发
+      once: options.once, // 是否只触发一次
+      passive: options.passive, // boolean，表示监听函数不会调用 preventDefault 方法；passive是被动的，消极的意思
     });
 
     return () => {
-      targetElement.removeEventListener(eventName, eventListener, {
+      targetElement.removeEventListener(eventName, eventListener, { // 删除监听函数
         capture: options.capture,
       });
     };
