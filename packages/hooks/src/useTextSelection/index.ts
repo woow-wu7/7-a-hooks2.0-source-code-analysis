@@ -173,3 +173,5 @@ function useTextSelection(target?: BasicTarget): IState {
 }
 
 export default useTextSelection;
+// test
+// https://codesandbox.io/s/usetextselection-hm0xx?file=/src/App.tsx
