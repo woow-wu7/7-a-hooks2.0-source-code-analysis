@@ -51,7 +51,7 @@ import useTitle from './useTitle'; // useTitle 设置页面标题
 import useNetwork from './useNetwork';
 import useTimeout from './useTimeout'; // useTimeout
 import useReactive from './useReactive';
-import useFavicon from './useFavicon';
+import useFavicon from './useFavicon'; // useFavicon
 import useCountDown from './useCountDown';
 import useWebSocket from './useWebSocket';
 import useLockFn from './useLockFn'; // useLockFn，用于给一个异步函数增加 ( 竞态锁 )，防止并发执行
