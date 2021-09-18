@@ -30,7 +30,7 @@ export function getTargetElement(
   } else if ('current' in target) {
     targetElement = target.current; // target是 ( ref )
   } else {
-    targetElement = target; // BasicTarget类型范围内，除去 function object<Ref> 以外的类型
+    targetElement = target; // BasicTarget类型范围内，除去 function object<Ref> 以外的类型则直接赋值
   }
 
   return targetElement;
