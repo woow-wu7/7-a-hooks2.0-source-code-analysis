@@ -26,7 +26,7 @@ function useInterval(
       fnRef.current?.();
     }, delay);
     return () => {
-      clearInterval(timer); // 清除定时器
+      clearInterval(timer); // 清除定时器，这里一定要清除上一次的定时器，不然事件之间会相互影响，比如执行改变delay的事件时
     };
   }, [delay]);
 }
