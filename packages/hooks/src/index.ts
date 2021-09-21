@@ -45,7 +45,7 @@ import useHistoryTravel from './useHistoryTravel';
 import useDebounceEffect from './useDebounceEffect';
 import useCookieState from './useCookieState';
 import useSetState from './useSetState'; // useSetState
-import useInterval from './useInterval';
+import useInterval from './useInterval'; // useInterval 一个处理 setInterval 的 hook，可以设置 ( 立即执行 和 延时 ) 等加强功能
 import useWhyDidYouUpdate from './useWhyDidYouUpdate';
 import useTitle from './useTitle'; // useTitle 设置页面标题
 import useNetwork from './useNetwork';

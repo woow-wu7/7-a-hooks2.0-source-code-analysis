@@ -17,3 +17,4 @@
 - [x] useTextSelection -> 实时获取用户当前选取的文本内容及位置
 - [x] useEventListener -> 优雅的使用 addEventListener
 - [x] useFavicon -> 设置和切换页面的favicon
+- [x] useInterval -> 一个用来处理 setInterval 的hook，具有设置 immediate，delay 的加强功能
