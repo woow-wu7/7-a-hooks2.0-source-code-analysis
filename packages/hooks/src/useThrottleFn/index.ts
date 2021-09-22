@@ -20,9 +20,9 @@ function useThrottleFn<T extends Fn>(fn: T, options?: ThrottleOptions) {
   // 回答：为了解决闭包问题
   // issue：https://github.com/alibaba/hooks/issues/1121
 
-  const wait = options?.wait ?? 1000;
+  const wait = options?.wait ?? 1000; // wait是unll或undefined，则返回1000
 
-  const throttled = useCreation(
+  const throttled = useCreation( // useCreation是useMemo或useRef的替代品
     () =>
       throttle<T>(
         ((...args: any[]) => {

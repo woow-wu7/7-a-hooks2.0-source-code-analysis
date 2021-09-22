@@ -31,7 +31,7 @@ import useUnmount from './useUnmount';
 import useAntdTable from './useAntdTable';
 import useFusionTable from './useFusionTable';
 import useSet from './useSet'; // useSet 和 useMap 类似
-import usePersistFn from './usePersistFn';
+import usePersistFn from './usePersistFn'; // usePersistFn 持久化 function 的 hook
 import useMap from './useMap'; // useMap
 import useCreation from './useCreation'; // useCreation 是 useMemo 或者 useRef 的替代品，因为useMemo不能保证memo的值一定不会被重计算
 import useDrop from './useDrop';
