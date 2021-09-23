@@ -21,3 +21,4 @@
 - [x] usePersistFn -> 持久化function的hooks，注意和useCallback的区别
 - [x] useUnmount -> 只在组件 unmount 时执行的hook，利用 useEffect的参数函数的返回函数实现
 - [x] useUnmountRef -> 获取当前组件 ( 是否被卸载 ) 的hook
+- [x] useClickAway -> 管理目标元素外的点击事件
