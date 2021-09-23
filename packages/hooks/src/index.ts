@@ -56,7 +56,7 @@ import useCountDown from './useCountDown';
 import useWebSocket from './useWebSocket';
 import useLockFn from './useLockFn'; // useLockFn，用于给一个异步函数增加 ( 竞态锁 )，防止并发执行
 import useTrackedEffect from './useTrackedEffect';
-import useUnmountedRef from './useUnmountedRef';
+import useUnmountedRef from './useUnmountedRef'; // useUnmountedRef，获取组件是否被卸载的hook
 import useExternal from './useExternal';
 import useSafeState from './useSafeState';
 

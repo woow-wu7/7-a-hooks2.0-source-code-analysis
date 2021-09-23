@@ -20,3 +20,4 @@
 - [x] useInterval -> 一个用来处理 setInterval 的hook，具有设置 immediate，delay 的加强功能
 - [x] usePersistFn -> 持久化function的hooks，注意和useCallback的区别
 - [x] useUnmount -> 只在组件 unmount 时执行的hook，利用 useEffect的参数函数的返回函数实现
+- [x] useUnmountRef -> 获取当前组件 ( 是否被卸载 ) 的hook
