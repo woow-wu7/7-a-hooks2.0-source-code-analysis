@@ -28,6 +28,9 @@ export default () => {
     (event: MouseEvent) => {
       const { screenX, screenY, clientX, clientY, pageX, pageY } = event;
       setState({ screenX, screenY, clientX, clientY, pageX, pageY });
+      // screenX 距离 ( 显示器 ) 左侧的距离 - 显示器
+      // clientX 距离 ( 当前视窗 ) 左侧的距离 - 视窗
+      // pageX 距离 ( 完整页面 ) 左侧的距离 - 包括视窗之外
     },
     {
       target: document,
