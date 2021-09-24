@@ -35,23 +35,27 @@ function useEventListener(eventName: string, handler: Function, options: Options
 
 // useEventListener
 // ------------------------------------------------------------------------------------------------------------ useEventListener
+// 参数
+//  eventName 事件名
+//  handler 监听函数
+//  options 配置项
 function useEventListener(eventName: string, handler: Function, options: Options = {}) {
   const handlerRef = useRef<Function>();
   handlerRef.current = handler;
 
   useEffect(() => {
-    const targetElement = getTargetElement(options.target, window)!;
+    const targetElement = getTargetElement(options.target, window)!; // target存在则target的几种情况，否则window -> target表示需要绑定事件监听的元素节点
     if (!targetElement.addEventListener) {
-      return;
+      return; // safe
     }
 
     const eventListener = (
       event: Event,
     ): EventListenerOrEventListenerObject | AddEventListenerOptions => {
-      return handlerRef.current && handlerRef.current(event);
+      return handlerRef.current && handlerRef.current(event); // handler
     };
 
-    targetElement.addEventListener(eventName, eventListener, {
+    targetElement.addEventListener(eventName, eventListener, { // targetElement 绑定事件监听
       capture: options.capture, // 是否在捕获阶段触发
       once: options.once, // 是否只触发一次
       passive: options.passive, // boolean，表示监听函数不会调用 preventDefault 方法；passive是被动的，消极的意思

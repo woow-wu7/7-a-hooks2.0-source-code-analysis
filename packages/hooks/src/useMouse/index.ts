@@ -19,6 +19,7 @@ const initState: CursorState = {
   pageY: NaN,
 };
 
+// useMouse
 export default () => {
   const [state, setState] = useState(initState);
 
