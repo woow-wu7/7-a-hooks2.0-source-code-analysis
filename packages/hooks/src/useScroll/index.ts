@@ -72,7 +72,7 @@ function useScroll(target?: Target, shouldUpdate: ScrollListenController = () =>
         };
       }
 
-      if (shouldUpdatePersist(newPosition)) setPosition(newPosition); // 返回true，则设置最新的位置信息
+      if (shouldUpdatePersist(newPosition)) setPosition(newPosition); // 返回true，则设置最新的位置信息，即监听的条件，比如可以设置在top值是100-200时进行监听
       // 1
       // shouldUpdatePersist(newPosition)
       // 1.1 const shouldUpdatePersist = usePersistFn(shouldUpdate);
@@ -94,7 +94,7 @@ function useScroll(target?: Target, shouldUpdate: ScrollListenController = () =>
     };
   }, [target, shouldUpdatePersist]);
 
-  return position;
+  return position; // 最终返回 position
 }
 
 export default useScroll;
