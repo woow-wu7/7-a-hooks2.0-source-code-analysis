@@ -20,7 +20,7 @@ import useDebounce from './useDebounce';
 import useDebounceFn from './useDebounceFn';
 import usePrevious from './usePrevious';
 import useMouse from './useMouse'; // useMouse
-import useScroll from './useScroll';
+import useScroll from './useScroll'; // useScroll 获取元素的滚动状态
 import useClickAway from './useClickAway'; // useClickAway 管理目标元素外的点击事件
 import useFullscreen from './useFullscreen'; // useFullscreen
 import useInViewport from './useInViewport';
