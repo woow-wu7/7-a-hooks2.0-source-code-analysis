@@ -18,13 +18,13 @@ export type EventOption = {
 const aliasKeyCodeMap: any = {
   esc: 27,
   tab: 9,
-  enter: 13,
+  enter: 13, // (13 enter)
   space: 32,
-  up: 38,
   left: 37,
+  up: 38,
   right: 39,
   down: 40,
-  delete: [8, 46],
+  delete: [8, 46], // ( 8 BackSpace 退格键 ) ( 46 Delete 删除键 )
 };
 
 // 键盘事件 key 别名
@@ -60,7 +60,7 @@ const noop = () => {};
 function isType(obj: any) {
   return Object.prototype.toString
     .call(obj)
-    .replace(/^\[object (.+)\]$/, '$1')
+    .replace(/^\[object (.+)\]$/, '$1') // 替换成 ( 匹配成功的第一组内容 )，即类型的首字母大写字符串；注意 1. ( $n 表示匹配成功的第n组内容，n是从1开始的自然数 ) 2. 这里只有一个分组
     .toLowerCase();
 }
 
@@ -82,11 +82,11 @@ function genFilterKey(event: any, keyFilter: any) {
     return event.keyCode === keyFilter;
   }
   // 字符串依次判断是否有组合键
-  const genArr = keyFilter.split('.');
+  const genArr = keyFilter.split('.'); // 以.将字符串分隔成数组
   let genLen = 0;
   for (const key of genArr) {
     // 组合键
-    const genModifier = modifierKey[key];
+    const genModifier = modifierKey[key]; // 支持 ctrl shift alt meta
     // key 别名
     const aliasKey = aliasKeyMap[key];
     // keyCode 别名
@@ -122,25 +122,57 @@ function genFilterKey(event: any, keyFilter: any) {
 function genKeyFormater(keyFilter: any): KeyPredicate {
   const type = isType(keyFilter);
   if (type === 'function') {
+    // keyFilter 是一个函数，直接返回该函数，该函数执行后返回的返回值类型是boolean
     return keyFilter;
   }
   if (type === 'string' || type === 'number') {
-    return (event: KeyboardEvent) => genFilterKey(event, keyFilter);
+    // keyFilter 是 ( number ) | ( string )，分别对应 ( keycode ) 和 ( key别名 ) ，则包装成函数
+    return (event: KeyboardEvent) => genFilterKey(event, keyFilter); // genFilterKey 判断按键是否激活
   }
   if (type === 'array') {
+    // keyFilter 是一个数组
     return (event: KeyboardEvent) => keyFilter.some((item: any) => genFilterKey(event, item));
   }
+  // 不满足以上所有情况
   return keyFilter ? () => true : () => false;
 }
 
 const defaultEvents: Array<keyEvent> = ['keydown'];
+// export type keyEvent = 'keydown' | 'keyup';
 
+// ------------------------------------------------------------------------------------------------------------------ useKeyPress
+// useKeyPress
+// - 一个优雅的管理 ( keyup 和 keydown ) 键盘事件的 hook
+// - 支持键盘组合键
+// - 定义键盘事件的 key 和 keyCode 别名输入
+// - 支持返回值是boolean的回调
+// 参数
+//  - keyFilter: 支持键盘事件中的 ( key和keyCode )，支持 ( 回调方式返回boolean ) 判断，支持 ( 别名 ) 使用
+//      - export type KeyFilter = keyType | Array<keyType> | ((event: KeyboardEvent) => boolean);
+//      - export type keyType = KeyboardEvent['keyCode'] | KeyboardEvent['key'];
+//  - eventHandler: 事件监听函数
+//  - options: 配置项
+// 注意点
+// 1
+// keydown keyress keyup
+//  - 先后顺序：keydown -> keypress -> keyup
+//  - 如果用户按下了一个字符键不放，就会重复触发keydown和keypress事件，直到用户松开该键为止
+//  - 如果用户按下了一个非字符键不放，就会重复触发keydown事件，直到用户松开该键为止
+// 2
+// 原生input 和 antd中的Input
+//  - 原生input：在react中支持 onKeyDown onKeyUp 键盘按下/释放键盘事件
+//  - antdInput：支持 onPressEnter 按下回车的事件
 function useKeyPress(
   keyFilter: KeyFilter,
   eventHandler: EventHandler = noop,
   option: EventOption = {},
 ) {
   const { events = defaultEvents, target } = option;
+  // events
+  // option.events
+  // - const defaultEvents: Array<keyEvent> = ['keydown'];
+  // - defaultEvents: 'keydown'
+
   const callbackRef = useRef(eventHandler);
   callbackRef.current = eventHandler;
 
@@ -148,18 +180,18 @@ function useKeyPress(
     const callbackHandler = (event) => {
       const genGuard: KeyPredicate = genKeyFormater(keyFilter);
       if (genGuard(event)) {
-        return callbackRef.current(event);
+        return callbackRef.current(event); // 将keyup或者keydown事件的 ( event对象 ) 作为参数传入 ( eventHandler )
       }
     };
 
-    const el = getTargetElement(target, window)!;
+    const el = getTargetElement(target, window)!; // 非空target或者非空window
 
-    for (const eventName of events) {
-      el.addEventListener(eventName, callbackHandler);
+    for (const eventName of events) { // 'keydown' 或者 ‘keyup’
+      el.addEventListener(eventName, callbackHandler); // 绑定 keydown 或者 keyup 事件监听
     }
     return () => {
       for (const eventName of events) {
-        el.removeEventListener(eventName, callbackHandler);
+        el.removeEventListener(eventName, callbackHandler); // 清除事件监听
       }
     };
   }, [events, keyFilter, target]);

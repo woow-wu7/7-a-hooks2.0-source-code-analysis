@@ -22,6 +22,7 @@
 - [x] usePersistFn -> 持久化function的hooks，注意和useCallback的区别
 - [x] useMount -> 只在mount阶段执行的hook，注意只在mount阶段执行一次
 - [x] useUnmount -> 只在组件 unmount 时执行的hook，利用 useEffect的参数函数的返回函数实现
-- [x] useUnmountRef -> 获取当前组件 ( 是否被卸载 ) 的hook
+- [x] useUnmountRef -> 获取当前组件 ( 是否被卸载 ) 的hook
 - [x] useClickAway -> 管理目标元素外的点击事件
 - [x] useScroll -> 获取元素的 滚动 状态的hook
+- [x] useKeyPress -> 一个优雅的管理 keyup 和 keydown 键盘事件的 Hook，支持 ( keyFilter支持键盘组合键，key，keycode，别名，返回值是boolean的回调 )
