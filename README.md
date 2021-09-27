@@ -26,3 +26,4 @@
 - [x] useClickAway -> 管理目标元素外的点击事件
 - [x] useScroll -> 获取元素的 滚动 状态的hook
 - [x] useKeyPress -> 一个优雅的管理 keyup 和 keydown 键盘事件的 Hook，支持 ( keyFilter支持键盘组合键，key，keycode，别名，返回值是boolean的回调 )
+- [x] useInViewport -> 一个用于判断dom元素是否在可视化范围之内的hook

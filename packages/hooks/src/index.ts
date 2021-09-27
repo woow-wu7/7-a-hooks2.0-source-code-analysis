@@ -23,7 +23,7 @@ import useMouse from './useMouse'; // useMouse
 import useScroll from './useScroll'; // useScroll 获取元素的滚动状态
 import useClickAway from './useClickAway'; // useClickAway 管理目标元素外的点击事件
 import useFullscreen from './useFullscreen'; // useFullscreen
-import useInViewport from './useInViewport';
+import useInViewport from './useInViewport'; // useInViewport -> 判断一个DOM元素是否在可视区域
 import useKeyPress from './useKeyPress'; // 关键 keyup 或 keydown 键盘事件的hook，支持 (键盘组合，key，keycode，别名，返回boolean的函数 )
 import useEventListener from './useEventListener'; // useEventListener
 import useHover from './useHover';
