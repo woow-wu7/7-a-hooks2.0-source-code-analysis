@@ -40,7 +40,7 @@ import useMount from './useMount'; // useMount 只在 mount 阶段执行一次
 import useTextSelection from './useTextSelection';
 import useCounter from './useCounter';
 import useUpdate from './useUpdate'; // useUpdate 强制组件重新渲染
-import useEventTarget from './useEventTarget';
+import useEventTarget from './useEventTarget'; // useEventTarget 是对表单控件中的 onChange 和 value 的封装，具有 reset transform 等功能
 import useHistoryTravel from './useHistoryTravel';
 import useDebounceEffect from './useDebounceEffect';
 import useCookieState from './useCookieState';
