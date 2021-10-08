@@ -48,10 +48,15 @@ function useRequest<R = any, Item = any, U extends Item = any>(
   options: BasePaginatedOptions<U>,
 ): PaginatedResult<Item>;
 
+
+// useRequest
 function useRequest(service: any, options: any = {}) {
   const contextConfig = useContext(ConfigContext);
   // const ConfigContext = React.createContext<Config>({});
   // ConfigContext.displayName = 'UseRequestConfigContext';
+  // type Config = Options<any, any, any, any> | BasePaginatedOptions<any> | LoadMoreOptions<any>;
+
+
 
   const finalOptions = { ...contextConfig, ...options };
   // 合并 options
@@ -62,16 +67,17 @@ function useRequest(service: any, options: any = {}) {
   const loadMoreRef = useRef(loadMore);
 
   if (paginatedRef.current !== paginated) {
-    throw Error('You should not modify the paginated of options');
+    throw Error('You should not modify the paginated of options'); // paginated 不能被修改
   }
 
   if (loadMoreRef.current !== loadMore) {
-    throw Error('You should not modify the loadMore of options');
+    throw Error('You should not modify the loadMore of options'); // loadMore 不能被修改
   }
 
   paginatedRef.current = paginated;
   loadMoreRef.current = loadMore;
 
+  // TypeScript 2.6支持在.ts文件中通过在报错一行上方使用 // @ts-ignore 来忽略错误
   // @ts-ignore
   const fetchProxy = (...args: any[]) =>
     // @ts-ignore
@@ -111,22 +117,28 @@ function useRequest(service: any, options: any = {}) {
 
   // serice
   // - 包含 string object function 等情况
+  // 1
+  // string：作为url传入fetch，即 featch(string)
+  // 2
+  // object：解构后传入 fetch(url, rest)，或者 requestMethod(service)
+  // 3
+  // function：再包装一层 promise
   switch (typeof service) {
     case 'string':
       promiseService = () => finalRequestMethod(service); // string类型，将作为fetch的第一个参数传入即当作url传入
       break;
     case 'object':
-      const { url, ...rest } = service; // object类型，结构
+      const { url, ...rest } = service; // object类型，解构
       promiseService = () => (requestMethod ? requestMethod(service) : fetchProxy(url, rest));
       break;
     default:
       // function
       promiseService = (...args: any[]) =>
         new Promise((resolve, reject) => {
-          const s = service(...args); // 调用 function
+          const s = service(...args); // 调用 function，s是调用后的返回值，一般请求返回的都是一个promise对象
           let fn = s;
           if (!s.then) {
-            // 不是一个promise
+            // 不是一个promise，通过是否具有 then 方法来判断是不是 promise 对象
             switch (typeof s) {
               case 'string':
                 fn = finalRequestMethod(s);
@@ -147,6 +159,8 @@ function useRequest(service: any, options: any = {}) {
   if (paginated) {
     return usePaginated(promiseService, finalOptions);
   }
+
+  // useRequest 简单情况下最终调用 useAsync
   return useAsync(promiseService, finalOptions);
 }
 

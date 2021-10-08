@@ -36,7 +36,7 @@ import useMap from './useMap'; // useMap
 import useCreation from './useCreation'; // useCreation 是 useMemo 或者 useRef 的替代品，因为useMemo不能保证memo的值一定不会被重计算
 import useDrop from './useDrop';
 import useDrag from './useDrag';
-import useMount from './useMount';
+import useMount from './useMount'; // useMount 只在 mount 阶段执行一次
 import useTextSelection from './useTextSelection';
 import useCounter from './useCounter';
 import useUpdate from './useUpdate'; // useUpdate 强制组件重新渲染

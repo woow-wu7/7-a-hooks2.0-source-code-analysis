@@ -18,6 +18,28 @@ function usePaginated<R, Item, U extends Item = any>(
   service: (...p: PaginatedParams) => Promise<PaginatedFormatReturn<Item>>,
   options: BasePaginatedOptions<U>,
 ): PaginatedResult<Item>;
+
+// usePaginated 分页相关
+
+// 1
+// export type PaginatedParams = [
+//   {
+//     current: number;
+//     pageSize: number;
+//     sorter?: Sorter;
+//     filters?: Filter;
+//   },
+//   ...any[]
+// ];
+
+// 3
+// export interface BasePaginatedOptions<U>
+//   extends Omit<BaseOptions<PaginatedFormatReturn<U>, PaginatedParams>, 'paginated'> {
+//   paginated: true;
+//   defaultPageSize?: number; // 默认每页数据
+//   loadMorePageSize?: number; // 非第一页的 pageSize, for loadMore
+// }
+
 function usePaginated<R, Item, U extends Item = any>(
   service: (...p: PaginatedParams) => Promise<R>,
   options: BasePaginatedOptions<U> | PaginatedOptionsWithFormat<R, Item, U>,
