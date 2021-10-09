@@ -7,6 +7,8 @@ export interface Actions {
   toggle: (value?: boolean | undefined) => void;
 }
 
+// useBoolean
+//  - 利用 useBoolean 很容易实现
 export default function useBoolean(defaultValue = false): [boolean, Actions] {
   const [state, { toggle }] = useToggle(defaultValue);
 

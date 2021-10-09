@@ -28,12 +28,12 @@ export default (target: BasicTarget, options?: Options): boolean => {
     'mouseleave',
     () => {
       onLeave && onLeave();
-      setFalse();
+      setFalse(); // 离开，false
     },
     {
       target,
     },
   );
 
-  return state;
+  return state; // 返回一个boolean值，表示是否在元素上，即鼠标是否悬停在DOM元素上
 };
