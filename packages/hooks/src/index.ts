@@ -26,7 +26,7 @@ import useFullscreen from './useFullscreen'; // useFullscreen
 import useInViewport from './useInViewport'; // useInViewport -> 判断一个DOM元素是否在可视区域
 import useKeyPress from './useKeyPress'; // 关键 keyup 或 keydown 键盘事件的hook，支持 (键盘组合，key，keycode，别名，返回boolean的函数 )
 import useEventListener from './useEventListener'; // useEventListener
-import useHover from './useHover';
+import useHover from './useHover'; // useHover
 import useUnmount from './useUnmount'; // useUnmount
 import useAntdTable from './useAntdTable';
 import useFusionTable from './useFusionTable';

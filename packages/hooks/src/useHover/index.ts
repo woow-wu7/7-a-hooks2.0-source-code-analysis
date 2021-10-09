@@ -7,17 +7,19 @@ export interface Options {
   onLeave?: () => void;
 }
 
+// useHover
 export default (target: BasicTarget, options?: Options): boolean => {
   const { onEnter, onLeave } = options || {};
 
-  const [state, { setTrue, setFalse }] = useBoolean(false); // 1. 利用 useToggle 实现
+  const [state, { setTrue, setFalse }] = useBoolean(false);
+  // 1. useBoolean 利用 useToggle 实现
 
   useEventListener(
     // 2. 利用 useEventListener
     'mouseenter',
     () => {
       onEnter && onEnter();
-      setTrue();
+      setTrue(); // 进入
     },
     {
       target,
