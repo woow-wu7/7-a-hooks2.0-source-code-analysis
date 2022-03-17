@@ -8,7 +8,7 @@ type Size = { width?: number; height?: number };
 
 function useSize(target: BasicTarget): Size {
   const [state, setState] = useRafState<Size>(() => {
-    const el = getTargetElement(target);
+    const el = getTargetElement(target); // 获取目标节点
     return {
       width: ((el || {}) as HTMLElement).clientWidth,
       height: ((el || {}) as HTMLElement).clientHeight,
@@ -21,6 +21,7 @@ function useSize(target: BasicTarget): Size {
       return () => {};
     }
 
+    // 更新
     const resizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         setState({
