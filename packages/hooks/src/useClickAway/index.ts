@@ -1,6 +1,26 @@
 import { useEffect, useRef } from 'react';
 import { BasicTarget, getTargetElement } from '../utils/dom';
 
+
+// getTargetElement
+// export function getTargetElement(
+//   target?: BasicTarget<TargetElement>,
+//   defaultElement?: TargetElement,
+// ): TargetElement | undefined | null {
+//   if (!target) {
+//     return defaultElement; // target不存在，返回第二个参数 defaultElement，类型是 TargetElement
+//   }
+//   let targetElement: TargetElement | undefined | null; // HTMLElement | Element | Document | Window | undefined | null
+//   if (typeof target === 'function') {
+//     targetElement = target(); // target是 ( function )，调用后赋值给targetElement
+//   } else if ('current' in target) {
+//     targetElement = target.current; // target是 ( ref )
+//   } else {
+//     targetElement = target; // BasicTarget类型范围内，除去 function object<Ref> 以外的类型则直接赋值
+//   }
+//   return targetElement;
+// }
+
 // BasicTarget
 // export type BasicTarget<T = HTMLElement> =
 //   | (() => T | null)
@@ -19,7 +39,7 @@ type EventType = MouseEvent | TouchEvent;
 export default function useClickAway(
   onClickAway: (event: EventType) => void,
   target: BasicTarget | BasicTarget[],
-  eventName: string = defaultEvent,
+  eventName: string = defaultEvent, // 不传，默认 click 事件
 ) {
   const onClickAwayRef = useRef(onClickAway);
   onClickAwayRef.current = onClickAway;
@@ -46,7 +66,7 @@ export default function useClickAway(
 
           // 1
           // Node.contains(target)
-          // 概念：返回 boolean，表示 ( 传入的target节点 ) 是否是 ( 该节点 ) 的 ( 后代节点 )
+          // 概念：返回 boolean，表示 ( 传入的target节点 ) 是否是 ( Node节点 ) 的 ( 后代节点 )
           // 注意：两种说话都是OK的，1.node节点是否包含target节点 2. target是否是node的后代节点
 
           // 2

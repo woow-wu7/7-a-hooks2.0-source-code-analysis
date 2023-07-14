@@ -26,7 +26,7 @@ export function getTargetElement(
   let targetElement: TargetElement | undefined | null; // HTMLElement | Element | Document | Window | undefined | null
 
   if (typeof target === 'function') {
-    targetElement = target(); // taget是 ( function )，调用后赋值给targetElement
+    targetElement = target(); // target是 ( function )，调用后赋值给 targetElement
   } else if ('current' in target) {
     targetElement = target.current; // target是 ( ref )
   } else {

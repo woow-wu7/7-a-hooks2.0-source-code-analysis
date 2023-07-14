@@ -65,7 +65,7 @@ function useScroll(target?: Target, shouldUpdate: ScrollListenController = () =>
         };
       } else {
         // ------------------------------------------------------------------------------------------- target !== document
-
+        
         newPosition = {
           left: (currentTarget as HTMLElement).scrollLeft,
           top: (currentTarget as HTMLElement).scrollTop,
